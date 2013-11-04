@@ -2,15 +2,11 @@ DEFINES += REVIEWBOARD_LIBRARY
 
 TEMPLATE = lib
 
-QT += network
-QT += script
-
-TARGET = ReviewBoard
+QT += network script
 
 PROVIDER = CreatorPlugins
 
-HEADERS += \
-	reviewboardplugin.h \
+HEADERS += reviewboardplugin.h \
 	reviewboardsettingspage.h \
 	reviewboard_global.h \
 	reviewboardconstants.h \
@@ -21,8 +17,7 @@ HEADERS += \
 	reviewinfo.h \
 	updatereviewdialog.h
 
-SOURCES += \
-	reviewboardplugin.cpp \
+SOURCES += reviewboardplugin.cpp \
 	reviewboardsettingspage.cpp \
 	submitreviewdialog.cpp \
 	reviewboardserver.cpp \
