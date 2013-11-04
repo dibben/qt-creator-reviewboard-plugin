@@ -11,3 +11,12 @@
 *.lai
 *.la
 *.a
+
+ReviewBoard.pluginspec
+Makefile
+*.pro.user
+
+.moc
+.obj
+.uic
+.rcc

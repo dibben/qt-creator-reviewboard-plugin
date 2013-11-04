@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/reviewboard">
+        <file>images/review_board_logo.png</file>
+        <file>images/logo16.ico</file>
+    </qresource>
+</RCC>
