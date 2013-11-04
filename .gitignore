@@ -14,7 +14,7 @@
 
 ReviewBoard.pluginspec
 Makefile
-*.pro.user
+*.pro.user*
 
 .moc
 .obj
