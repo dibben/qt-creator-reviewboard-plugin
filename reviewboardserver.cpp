@@ -80,10 +80,10 @@ void ReviewBoardServer::login(const QString& username, const QString& password)
         QScriptValue resp = apiPost(QString::fromLatin1("api/json/accounts/login/"), values, files);
 
         if (resp.property(QString::fromLatin1("stat")).toString() == QString::fromLatin1("ok")) {
-            Display(QString::fromLatin1(" Login OK - Yeah!"));
+			displayMsg(QString::fromLatin1(" Login OK - Yeah!"));
         } else {
             QString error = resp.property(QString::fromLatin1("err")).property(QString::fromLatin1("msg")).toString();
-            Display(error);
+			displayMsg(error);
         }
     }
 }
@@ -149,7 +149,7 @@ void ReviewBoardServer::listRepositories()
 
 QScriptValue ReviewBoardServer::repositoryInfo(int rid)
 {
-    Display( QString::fromLatin1("Checking info for rid %1").arg(rid));
+	displayMsg( QString::fromLatin1("Checking info for rid %1").arg(rid));
     QScriptValue rsp;
     if (m_Old) {
         rsp = apiGet( QString::fromLatin1("api/json/repositories/%1/info/").arg(rid));
@@ -183,7 +183,7 @@ QString ReviewBoardServer::newReviewRequest(const QString& repositoryUrl)
 
 void ReviewBoardServer::saveDraft(const QString& id)
 {
-    Display(QString::fromLatin1("saving draft, id = %1").arg(id));
+	displayMsg(QString::fromLatin1("saving draft, id = %1").arg(id));
 
 	QHash<QString, QVariant> values;
 	QHash<QString, QVariant> files;
@@ -197,7 +197,7 @@ void ReviewBoardServer::saveDraft(const QString& id)
 
 void ReviewBoardServer::uploadDiff(const QString &id, const QString& path, const QString &diffContent)
 {
-    Display(QString::fromLatin1("uploading diff, id = %1").arg(id));
+	displayMsg(QString::fromLatin1("uploading diff, id = %1").arg(id));
 
 	QHash<QString, QVariant> values;
 	QHash<QString, QVariant> files;
@@ -218,7 +218,7 @@ void ReviewBoardServer::uploadDiff(const QString &id, const QString& path, const
 
 void  ReviewBoardServer::publish(const QString& id)
 {
-    Display(QString::fromLatin1("publishing, id = %1").arg(id));
+	displayMsg(QString::fromLatin1("publishing, id = %1").arg(id));
 
     QHash<QString, QVariant> values;
     QHash<QString, QVariant> files;
@@ -232,7 +232,7 @@ void  ReviewBoardServer::publish(const QString& id)
 
 void ReviewBoardServer::setField(const QString& id, const QString& field, const QString& value)
 {
-    Display(QString::fromLatin1("setting field, id = ") + id);
+	displayMsg(QString::fromLatin1("setting field, id = ") + id);
 
 	QHash<QString, QVariant> files;
 	QHash<QString, QVariant> values;
@@ -288,16 +288,16 @@ QScriptValue ReviewBoardServer::apiGet(const QString& path)
 
 	//error check
     QString result = QString::fromLatin1(reply->readAll());
-	Display(result);
+	displayMsg(result);
 
 	reply->deleteLater();
 
     QScriptValue sc = engine.evaluate(QString::fromLatin1("rsp = ") + result);
 
 	if (engine.hasUncaughtException()) {
-        Display(QString::fromLatin1("problem parsing string"));
+		displayMsg(QString::fromLatin1("problem parsing string"));
 
-		Display(engine.uncaughtException().toString());
+		displayMsg(engine.uncaughtException().toString());
 	}
 
 	return sc;
@@ -317,33 +317,33 @@ QScriptValue ReviewBoardServer::apiPost(const QString& path, const QHash<QString
 	QNetworkReply* reply = qnam.post(request, encodeData(values, files).toUtf8());
 
 
-    Display(QString::fromLatin1("Posting: ") + path);
+	displayMsg(QString::fromLatin1("Posting: ") + path);
 
 	while (!reply->isFinished()) {
 		qApp->processEvents();
 	}
 
-    Display(QString::fromLatin1("Network error = %1").arg(reply->error()));
+	displayMsg(QString::fromLatin1("Network error = %1").arg(reply->error()));
 
 	//TODO: error check here
 
     QString result = QString::fromLatin1(reply->readAll());
-	Display(result);
+	displayMsg(result);
 
 	reply->deleteLater();
 
     QScriptValue sc = engine.evaluate(QString::fromLatin1("rsp = ") + result);
 
 	if (engine.hasUncaughtException()) {
-        Display(QString::fromLatin1("problem parsing string"));
+		displayMsg(QString::fromLatin1("problem parsing string"));
 
-		Display(engine.uncaughtException().toString());
+		displayMsg(engine.uncaughtException().toString());
 	} else {
 
 		QScriptValueIterator it(sc);
 		 while (it.hasNext()) {
 			 it.next();
-             Display(QString::fromLatin1("data: ") + it.name() + QString::fromLatin1(" : ") + it.value().toString());
+			 displayMsg(QString::fromLatin1("data: ") + it.name() + QString::fromLatin1(" : ") + it.value().toString());
 		 }
 	}
 
@@ -365,33 +365,33 @@ QScriptValue ReviewBoardServer::apiPut(const QString &path, const QHash<QString,
 	QNetworkReply* reply = qnam.put(request, encodeData(values, files).toUtf8());
 
 
-    Display(QString::fromLatin1("Posting: ") + path);
+	displayMsg(QString::fromLatin1("Posting: ") + path);
 
 	while (!reply->isFinished()) {
 		qApp->processEvents();
 	}
 
-    Display(QString::fromLatin1("Network error = %1").arg(reply->error()));
+	displayMsg(QString::fromLatin1("Network error = %1").arg(reply->error()));
 
 	//TODO: error check here
 
     QString result = QString::fromLatin1(reply->readAll());
-	Display(result);
+	displayMsg(result);
 
 	reply->deleteLater();
 
     QScriptValue sc = engine.evaluate(QString::fromLatin1("rsp = ") + result);
 
 	if (engine.hasUncaughtException()) {
-        Display(QString::fromLatin1("problem parsing string"));
+		displayMsg(QString::fromLatin1("problem parsing string"));
 
-		Display(engine.uncaughtException().toString());
+		displayMsg(engine.uncaughtException().toString());
 	} else {
 
 		QScriptValueIterator it(sc);
 		 while (it.hasNext()) {
 			 it.next();
-             Display(QString::fromLatin1("data: ") + it.name() + QString::fromLatin1(" : ") + it.value().toString());
+			 displayMsg(QString::fromLatin1("data: ") + it.name() + QString::fromLatin1(" : ") + it.value().toString());
 		 }
 	}
 
@@ -433,7 +433,7 @@ QString ReviewBoardServer::encodeData(const QHash<QString, QVariant>& values, co
 }
 
 
-void ReviewBoardServer::Display(const QString& text)
+void ReviewBoardServer::displayMsg(const QString& text)
 {
 	if (!m_Debug) return;
 

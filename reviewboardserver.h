@@ -64,7 +64,7 @@ public:
 
 	QString			url(const QString& id) const;
 
-	void		Display(const QString& text);
+	void			displayMsg(const QString& text);
 
 public slots:
 
