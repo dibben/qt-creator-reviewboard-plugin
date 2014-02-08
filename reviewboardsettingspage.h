@@ -85,9 +85,11 @@ public:
 								 QObject *parent = 0);
 	virtual ~ReviewBoardSettingsPage();
 
-	virtual QWidget *createPage(QWidget *parent);
+	virtual	QWidget*	widget();
+	virtual QWidget*	createPage(QWidget *parent);
 	virtual void apply();
 	virtual void finish() { }
+
 
 
 signals:

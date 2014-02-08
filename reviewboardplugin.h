@@ -48,9 +48,9 @@ public:
 	ReviewBoardPlugin();
 	~ReviewBoardPlugin();
 
-	bool initialize(const QStringList &arguments, QString *error_message);
-	void extensionsInitialized();
-	void shutdown();
+	bool		initialize(const QStringList &arguments, QString *error_message);
+	void		extensionsInitialized();
+	void		shutdown();
 
 private slots:
 
@@ -62,10 +62,10 @@ private slots:
 private:
 
 	QString		projectTopLevel();
-	void				openUrl(const QString& data);
-	void				submitReview(const QString &workingDir, const Repository& rep, const QStringList& files);
+	void		openUrl(const QString& data);
+	void		submitReview(const QString &workingDir, const Repository& rep, const QStringList& files);
 
-	void				svnStatus(const QString &workingDir, const QStringList &relativePaths);
+	void		svnStatus(const QString &workingDir, const QStringList &relativePaths);
 
 	 QSharedPointer<ReviewBoardSettings>	m_Settings;
 	 QSharedPointer<ReviewBoardServer>	m_Server;

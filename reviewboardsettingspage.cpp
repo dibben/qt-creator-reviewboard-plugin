@@ -155,6 +155,11 @@ QWidget *ReviewBoardSettingsPage::createPage(QWidget *parent)
 	return m_widget;
 }
 
+QWidget* ReviewBoardSettingsPage::widget()
+{
+	return createPage(0);
+}
+
 void ReviewBoardSettingsPage::apply()
 {
 	if (m_widget) {

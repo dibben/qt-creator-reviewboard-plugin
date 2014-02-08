@@ -207,8 +207,6 @@ void ReviewBoardPlugin::svnStatus(const QString &workingDir, const QStringList& 
 	progress.hide();
 
 	submitReview(workingDir, rep, files);
-
-
 }
 
 
