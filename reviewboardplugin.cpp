@@ -58,6 +58,7 @@
 #include <QAction>
 #include <QKeySequence>
 #include <QDir>
+#include <QString>
 #include <QStringList>
 #include <QDesktopServices>
 #include <QUrl>
@@ -157,7 +158,7 @@ QString ReviewBoardPlugin::projectTopLevel()
 
 	if (currentProject) {
 
-		QString currentProjectPath = currentProject->projectDirectory();
+		QString currentProjectPath = currentProject->projectDirectory().toString();
 		//QString  currentProjectName = currentProject->displayName();
 
 		currentProjectTopLevel = currentProjectPath;
