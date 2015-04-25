@@ -1,17 +1,17 @@
-
 {
-    
-	
-"Vendor" : "CreatorPlugins",
-
-	
-	
-	
-"Description" : "Reviewboard plugin.",
-
-	
-"Url" : ""
-
-	
-
+	"Name" : "ReviewBoard",
+	"Version" : "0.2",
+	"CompatVersion" : "3.4.0",
+	"Experimental" : true,
+	"Vendor" : "David Dibben",
+	"Copyright" : "(C) 2014 David Dibben",
+	"License" :  "",
+	"Category" : "Custom Plugins",
+	"Description" : "Reviewboard plugin.",
+	"Url" : "",
+	"Dependencies" : [
+        { "Name" : "VcsBase", "Version" : "3.4.0" },
+        { "Name" : "TextEditor", "Version" : "3.4.0" },
+        { "Name" : "Core", "Version" : "3.4.0" }
+    ]
 }

@@ -43,7 +43,8 @@ class ReviewBoardServer;
 class ReviewBoardPlugin : public ExtensionSystem::IPlugin
 {
     Q_OBJECT
-	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.ReviewBoardPlugin")
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "ReviewBoard.json")
+
 public:
 	ReviewBoardPlugin();
 	~ReviewBoardPlugin();

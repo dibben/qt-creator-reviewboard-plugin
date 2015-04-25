@@ -1,0 +1,13 @@
+{
+	\"Name\" : \"ReviewBoard\",
+	\"Version\" : \"0.2\",
+	\"CompatVersion\" : \"$$QTCREATOR_COMPAT_VERSION\",
+	\"Experimental\" : true,
+	\"Vendor\" : \"David Dibben\",
+	\"Copyright\" : \"(C) 2014 David Dibben\",
+	\"License\" :  \"\",
+	\"Category\" : \"Custom Plugins\",
+	\"Description\" : \"Reviewboard plugin.\",
+	\"Url\" : \"\",
+	$$dependencyList
+}

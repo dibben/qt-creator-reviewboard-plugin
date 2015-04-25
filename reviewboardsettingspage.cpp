@@ -29,7 +29,6 @@
 
 #include <coreplugin/icore.h>
 #include <coreplugin/editormanager/editormanager.h>
-#include <coreplugin/mimedatabase.h>
 #include <cppeditor/cppeditorconstants.h>
 
 #include <extensionsystem/pluginmanager.h>

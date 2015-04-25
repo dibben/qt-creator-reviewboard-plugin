@@ -45,6 +45,7 @@
 
 #include <projectexplorer/projectexplorer.h>
 #include <projectexplorer/project.h>
+#include <projectexplorer/projecttree.h>
 #include <utils/qtcassert.h>
 
 #include <vcsbase/basevcseditorfactory.h>
@@ -101,7 +102,7 @@ bool ReviewBoardPlugin::initialize(const QStringList &arguments, QString *error_
     menu->setIcon(QIcon(QString::fromLatin1(":/reviewboard/images/logo16.ico")));
 	mtools->addMenu(mreviewtools);
 
-	Core::Context context(CppEditor::Constants::C_CPPEDITOR);
+	Core::Context context(CppEditor::Constants::CPPEDITOR_ID);
 
 	QAction *submitReview = new QAction(tr("Submit Review"),  this);
 	Core::Command *submitCmd = am->registerAction(submitReview, Constants::CREATE_REVIEW, context);
@@ -148,11 +149,10 @@ QString ReviewBoardPlugin::projectTopLevel()
 {
 	//current project or file
 
-	const ProjectExplorer::ProjectExplorerPlugin *pe = ProjectExplorer::ProjectExplorerPlugin::instance();
-	//Core::VcsManager *vcsManager = core->vcsManager();
+
 
 	//Core::IVersionControl *projectControl = 0;
-	const ProjectExplorer::Project *currentProject = pe->currentProject();
+	const ProjectExplorer::Project *currentProject = ProjectExplorer::ProjectTree::currentProject();
 
 	QString currentProjectTopLevel;
 
@@ -340,7 +340,7 @@ void ReviewBoardPlugin::updateReview()
 
 
 
-Q_EXPORT_PLUGIN(ReviewBoardPlugin)
+//Q_EXPORT_PLUGIN(ReviewBoardPlugin);
 
 
 

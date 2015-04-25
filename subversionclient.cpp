@@ -37,7 +37,7 @@
 #include <vcsbase/basevcseditorfactory.h>
 #include <vcsbase/vcsbaseeditor.h>
 #include <vcsbase/basevcssubmiteditorfactory.h>
-#include <vcsbase/vcsbaseoutputwindow.h>
+#include <vcsbase/vcsoutputwindow.h>
 #include <utils/synchronousprocess.h>
 #include <utils/parameteraction.h>
 
@@ -138,7 +138,7 @@ Repository SubversionClient::repositoryInfo(const QString &workingDir, const QSt
 		args.append(relativePaths);
 	}
 
-    VcsBase::VcsBaseOutputWindow *outwin = VcsBase::VcsBaseOutputWindow::instance();
+	VcsBase::VcsOutputWindow *outwin = VcsBase::VcsOutputWindow::instance();
 	outwin->setRepository(workingDir);
 	SubversionResponse response = runSvn(workingDir, args, m_Settings.timeOutMS(), true);
 	outwin->clearRepository();
@@ -186,7 +186,7 @@ QStringList SubversionClient::svnStatus(const QString &workingDir, const QString
 		args.append(relativePaths);
 	}
 
-    VcsBase::VcsBaseOutputWindow *outwin = VcsBase::VcsBaseOutputWindow::instance();
+	VcsBase::VcsOutputWindow *outwin = VcsBase::VcsOutputWindow::instance();
 	outwin->setRepository(workingDir);
 	SubversionResponse response = runSvn(workingDir, args, m_Settings.timeOutMS(), true);
 	outwin->clearRepository();
@@ -233,7 +233,7 @@ QString SubversionClient::svnDiff(const QString &workingDir, const QStringList& 
 
 	args += files;
 
-    VcsBase::VcsBaseOutputWindow *outwin = VcsBase::VcsBaseOutputWindow::instance();
+	VcsBase::VcsOutputWindow *outwin = VcsBase::VcsOutputWindow::instance();
 	outwin->setRepository(workingDir);
 	SubversionResponse response = runSvn(workingDir, args, m_Settings.timeOutMS(), true);
 	outwin->clearRepository();
@@ -257,11 +257,11 @@ SubversionResponse SubversionClient::runSvn(const QString &workingDir,
 	}
 	const QStringList allArgs = m_Settings.addOptions(arguments);
 
-    VcsBase::VcsBaseOutputWindow *outputWindow = VcsBase::VcsBaseOutputWindow::instance();
+	VcsBase::VcsOutputWindow *outputWindow = VcsBase::VcsOutputWindow::instance();
 	// Hide passwords, etc in the log window
 	//: Executing: <executable> <arguments>
 	const QString outputText = msgExecutionLogEntry(workingDir, executable, allArgs);
-	if (m_Debug) outputWindow->appendCommand(outputText);
+	if (m_Debug) outputWindow->appendMessage(outputText);
 
 	//if (Subversion::Constants::debug)
 //		qDebug() << "runSvn" << timeOut << outputText;

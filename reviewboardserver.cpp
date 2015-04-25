@@ -36,7 +36,7 @@
 #include <QScriptEngine>
 #include <QScriptValueIterator>
 
-#include <vcsbase/vcsbaseoutputwindow.h>
+#include <vcsbase/vcsoutputwindow.h>
 
 using namespace ReviewBoard;
 using namespace ReviewBoard::Internal;
@@ -437,7 +437,7 @@ void ReviewBoardServer::displayMsg(const QString& text)
 {
 	if (!m_Debug) return;
 
-	VcsBase::VcsBaseOutputWindow *outputWindow = VcsBase::VcsBaseOutputWindow::instance();
+	VcsBase::VcsOutputWindow *outputWindow = VcsBase::VcsOutputWindow::instance();
 	outputWindow->append(text);
 }
 
