@@ -273,7 +273,7 @@ SubversionResponse SubversionClient::runSvn(const QString &workingDir,
 	QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
 	env.insert(QLatin1String("LANG"), QString(QLatin1Char('C')));
 	process.setProcessEnvironment(env);
-	process.setTimeout(timeOut);
+	process.setTimeoutS(timeOut);
 	process.setCodec(outputCodec);
 
 	process.setStdErrBufferedSignalsEnabled(true);
