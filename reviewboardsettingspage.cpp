@@ -139,7 +139,7 @@ ReviewBoardSettingsPage::ReviewBoardSettingsPage(QSharedPointer<ReviewBoardSetti
     setDisplayName( QCoreApplication::translate("ReviewBoard", Constants::REVIEWBOARD_SETTINGS_ID));
     setCategory( Constants::REVIEWBOARD_SETTINGS_CATEGORY);
     setDisplayCategory( QCoreApplication::translate("ReviewBoard", Constants::REVIEWBOARD_SETTINGS_CATEGORY));
-    setCategoryIcon(QLatin1String(":/reviewboard/images/review_board_logo.png"));
+	setCategoryIcon(Utils::Icon(":/reviewboard/images/review_board_logo.png"));
 }
 
 ReviewBoardSettingsPage::~ReviewBoardSettingsPage()

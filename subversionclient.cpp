@@ -287,8 +287,8 @@ SubversionResponse SubversionClient::runSvn(const QString &workingDir,
 
 	const Utils::SynchronousProcessResponse sp_resp = process.run(executable, allArgs);
 	response.error = true;
-	response.stdErr = sp_resp.stdErr;
-	response.stdOut = sp_resp.stdOut;
+	response.stdErr = sp_resp.stdErr();
+	response.stdOut = sp_resp.stdOut();
 	switch (sp_resp.result) {
 	case Utils::SynchronousProcessResponse::Finished:
 		response.error = false;
